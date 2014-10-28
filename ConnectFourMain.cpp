@@ -20,7 +20,7 @@
 
 extern ConnectFourDisplayBase* DISPLAY;
 extern ConnectFourStateBase* DRAGON;
-extern ConnectFourSolverBase* SOLVER;
+// extern ConnectFourSolverBase* SOLVER; now in line 36
 
 // Main function.
 int main(int argc, char** argv) {
@@ -33,6 +33,7 @@ int main(int argc, char** argv) {
   curs_set(false);
   keypad(stdscr, true);
   // ----*
+  ConnectFourSolverBase* solver = new ConnectFourSolver;  // other approach to implement solver
   bool playAgain = false;  // to enable replay option
   while (playAgain == false) {
     DRAGON->initialize(6, 7);
@@ -94,7 +95,7 @@ int main(int argc, char** argv) {
       if (DRAGON->status() == ConnectFourStateBase::ONGOING && !leri) {
         move.row = 1;
         sleep(1);
-        if (DRAGON->applyMove(SOLVER->generateMove(DRAGON))) {
+        if (DRAGON->applyMove(solver->generateMove(DRAGON))) {
           leri = !leri;
         }
       }
