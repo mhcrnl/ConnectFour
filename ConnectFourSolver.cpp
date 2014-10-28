@@ -8,8 +8,9 @@
 #include "./ConnectFourStateBase.h"
 #include "./ConnectFourSolver.h"
 
-ConnectFourSolver solver;  // objekt
-ConnectFourSolverBase* SOLVER = &solver;  // zeiger
+// unnecessary since solver is not global anymore
+// ConnectFourSolver solver;  // objekt  
+// ConnectFourSolverBase* SOLVER = &solver;  // zeiger
 
 // _____________________________________________________________________________
 ConnectFourMove ConnectFourSolver::generateMove(
